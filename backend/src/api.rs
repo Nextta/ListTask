@@ -1,21 +1,12 @@
 use actix_web::{HttpResponse, Responder, get};
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Serialize, Deserialize)]
-struct MsgResponse {
-    msg: String,
-}
-
-impl MsgResponse {
-    fn new(msg_text: &str) -> MsgResponse {
-        MsgResponse {
-            msg: msg_text.to_string(),
-        }
-    }
+#[derive(Serialize, Deserialize)]
+struct HealthResponse {
+    status: &'static str,
 }
 
 #[get("/api/health")]
 pub async fn health() -> impl Responder {
-    let mensaje: MsgResponse = MsgResponse::new("{'Server':'True'}");
-    HttpResponse::Ok().body(mensaje.msg)
+    HttpResponse::Ok().json(HealthResponse { status: "ok" })
 }
