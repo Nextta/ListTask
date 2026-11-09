@@ -1,7 +1,10 @@
-use actix_web::{App, HttpServer};
-
+/* MODs */
 mod api;
+mod dtos;
+mod task;
 
+/* USEs */
+use actix_web::{App, HttpServer};
 use api::health;
 
 #[actix_web::main]

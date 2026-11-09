@@ -1,7 +1,7 @@
 use actix_web::{HttpResponse, Responder, get};
-use serde::{Deserialize, Serialize};
+use serde::Serialize;
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize)]
 struct HealthResponse {
     status: &'static str,
 }
